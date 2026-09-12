@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Header from "@/components/Header";
-import { MOCKUP_BLUEPRINT } from "@/lib/design-refs";
+import { MOCKUP_BLUEPRINT, sectionPhotos } from "@/lib/design-refs";
 
 /* ── Trust strip icons ── */
 function LeafIcon() {
@@ -47,96 +47,94 @@ const trustItems = [
   { icon: TruckIcon, label: ["Fast & Secure", "Delivery"] },
 ];
 
-/** Photo-only crops from mockup blueprint /design-refs/ChatGPT-Image-Sep-7-2026-01_27_23-PM.png */
 const collections = [
   {
     title: "Signature Blends",
     tagline: "Timeless classics, perfected.",
-    image: "/design-refs/collection-signature-crop.jpg",
+    image: sectionPhotos.collections.signature,
     alt: "Bronze capsule on stone with coffee beans",
   },
   {
     title: "Single Origin",
     tagline: "Distinctive. Authentic. Unforgettable.",
-    image: "/design-refs/collection-single-origin-crop.jpg",
+    image: sectionPhotos.collections.singleOrigin,
     alt: "Green capsule among coffee leaves",
   },
   {
     title: "Espresso Intenso",
     tagline: "Bold flavors for a stronger you.",
-    image: "/design-refs/collection-espresso-intenso-crop.jpg",
+    image: sectionPhotos.collections.espressoIntenso,
     alt: "Black capsule on dark volcanic rock",
   },
   {
     title: "Flavored Editions",
     tagline: "A delightful twist on tradition.",
-    image: "/design-refs/collection-flavored-crop.jpg",
+    image: sectionPhotos.collections.flavored,
     alt: "Purple capsule with vanilla and cinnamon",
   },
-] as const;
+];
 
 export default function HomePage() {
   return (
     <main data-mockup-blueprint={MOCKUP_BLUEPRINT}>
-      {/* ── HERO ── */}
-      <section className="relative min-h-[90vh] overflow-hidden bg-aroma-black lg:min-h-screen">
-        {/* Hero photography */}
-        <div className="absolute inset-0">
-          <Image
-            src="/design-refs/hero-marble-crop.jpg"
-            alt="Marble countertop with espresso, ARÔMA capsule box, and colorful capsules"
-            fill
-            priority
-            className="object-cover object-[62%_58%] lg:object-[58%_52%]"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-aroma-black from-0% via-aroma-black/95 via-35% to-aroma-black/15 to-55% lg:via-40% lg:to-50%" />
-        </div>
-
+      {/* ── HERO — split grid: content left, product photo right (no viewport wallpaper) ── */}
+      <section className="relative bg-aroma-black">
         <Header />
 
-        {/* Decorative script — mockup right overlay */}
-        <p
-          className="pointer-events-none absolute bottom-[32%] right-6 hidden font-serif text-xl italic leading-snug text-white/45 lg:block xl:right-12 xl:text-2xl"
-          aria-hidden="true"
-        >
-          More than coffee
-          <br />
-          <span className="text-white/65">A ritual</span>
-        </p>
+        <div className="mx-auto grid max-w-7xl lg:grid-cols-2 lg:min-h-screen">
+          {/* Left column — real DOM copy on solid dark ground */}
+          <div className="relative z-10 flex flex-col justify-center px-6 pb-12 pt-28 lg:px-10 lg:pb-20 lg:pt-36">
+            <div className="max-w-xl">
+              <p className="eyebrow mb-4">
+                Exceptional Coffee. Extraordinary Moments.
+              </p>
+              <h1 className="font-serif text-4xl font-light leading-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
+                Nespresso Capsules,
+                <br />
+                Redefined
+              </h1>
+              <p className="mt-5 max-w-md font-sans text-sm leading-relaxed text-white/75 md:text-[15px]">
+                Discover a curated selection of Nespresso® compatible capsules from
+                the world&apos;s finest coffee regions. Crafted for those who
+                appreciate the extraordinary.
+              </p>
+              <a href="#collections" className="btn-gold mt-8">
+                Shop Our Collection →
+              </a>
+            </div>
 
-        <div className="relative mx-auto flex max-w-7xl flex-col justify-center px-6 pb-16 pt-32 lg:min-h-screen lg:px-10 lg:pb-24 lg:pt-40">
-          <div className="max-w-xl">
-            <p className="eyebrow mb-4">
-              Exceptional Coffee. Extraordinary Moments.
-            </p>
-            <h1 className="font-serif text-4xl font-light leading-tight text-white md:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-              Nespresso Capsules,
-              <br />
-              Redefined
-            </h1>
-            <p className="mt-5 max-w-md font-sans text-sm leading-relaxed text-white/75 md:text-[15px]">
-              Discover a curated selection of Nespresso® compatible capsules from
-              the world&apos;s finest coffee regions. Crafted for those who
-              appreciate the extraordinary.
-            </p>
-            <a href="#collections" className="btn-gold mt-8">
-              Shop Our Collection →
-            </a>
+            <div className="mt-12 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4 lg:mt-16">
+              {trustItems.map(({ icon: Icon, label }) => (
+                <div key={label.join("-")} className="flex flex-col items-start gap-2 text-aroma-gold">
+                  <Icon />
+                  <span className="font-sans text-[9px] font-medium uppercase leading-tight tracking-[0.15em] text-white/80 md:text-[10px]">
+                    {label[0]}
+                    <br />
+                    {label[1]}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Trust strip */}
-          <div className="mt-12 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4 lg:mt-16">
-            {trustItems.map(({ icon: Icon, label }) => (
-              <div key={label.join("-")} className="flex flex-col items-start gap-2 text-aroma-gold">
-                <Icon />
-                <span className="font-sans text-[9px] font-medium uppercase leading-tight tracking-[0.15em] text-white/80 md:text-[10px]">
-                  {label[0]}
-                  <br />
-                  {label[1]}
-                </span>
-              </div>
-            ))}
+          {/* Right column — contained product photography */}
+          <div className="relative min-h-[340px] sm:min-h-[420px] lg:min-h-full">
+            <Image
+              src={sectionPhotos.hero}
+              alt="Marble countertop with espresso, ARÔMA capsule box, and colorful capsules"
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <p
+              className="pointer-events-none absolute bottom-[18%] right-6 font-serif text-lg italic leading-snug text-white/50 sm:text-xl lg:right-10 lg:text-2xl"
+              aria-hidden="true"
+            >
+              More than coffee
+              <br />
+              <span className="text-white/70">A ritual</span>
+            </p>
           </div>
         </div>
       </section>
@@ -144,7 +142,6 @@ export default function HomePage() {
       {/* ── OUR COLLECTIONS ── */}
       <section id="collections" className="bg-aroma-cream py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          {/* Section header */}
           <div className="mb-12 text-center lg:mb-16">
             <p className="font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-aroma-gold md:text-xs">
               Explore
@@ -157,7 +154,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Collection grid — photo cards with top overlay + bottom CTA per mockup */}
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
             {collections.map((col) => (
               <article
@@ -194,38 +190,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SUSTAINABILITY — full-width plantation photo with split overlay ── */}
-      <section id="sustainability" className="relative min-h-[520px] overflow-hidden lg:min-h-[580px]">
-        <Image
-          src="/design-refs/sustainability-plantation-crop.jpg"
-          alt="Coffee plantation at golden hour in misty mountains"
-          fill
-          className="object-cover object-left-center lg:object-[30%_center]"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-aroma-black/40" />
+      {/* ── SUSTAINABILITY — split grid, no full-bleed wallpaper ── */}
+      <section id="sustainability" className="grid lg:grid-cols-2">
+        <div className="flex flex-col justify-center bg-aroma-black px-6 py-16 lg:px-14 lg:py-24 xl:px-20">
+          <p className="eyebrow mb-4">A Richer Tomorrow</p>
+          <h2 className="font-serif text-3xl font-light leading-tight text-white md:text-4xl lg:text-[2.75rem]">
+            Sustainability in
+            <br />
+            Every Capsule
+          </h2>
+          <p className="mt-5 max-w-md font-sans text-sm leading-relaxed text-white/70 md:text-[15px]">
+            Great coffee should be good for the planet. Our capsules are
+            responsibly sourced and many are recyclable, so you can enjoy
+            every cup with a clear conscience.
+          </p>
+          <a href="#commitment" className="btn-gold mt-8 w-fit">
+            Our Commitment →
+          </a>
+        </div>
 
-        <div className="relative grid min-h-[520px] lg:min-h-[580px] lg:grid-cols-2">
-          {/* Left content panel */}
-          <div className="flex flex-col justify-center bg-aroma-black px-6 py-16 lg:px-14 lg:py-24 xl:px-20">
-            <p className="eyebrow mb-4">A Richer Tomorrow</p>
-            <h2 className="font-serif text-3xl font-light leading-tight text-white md:text-4xl lg:text-[2.75rem]">
-              Sustainability in
-              <br />
-              Every Capsule
-            </h2>
-            <p className="mt-5 max-w-md font-sans text-sm leading-relaxed text-white/70 md:text-[15px]">
-              Great coffee should be good for the planet. Our capsules are
-              responsibly sourced and many are recyclable, so you can enjoy
-              every cup with a clear conscience.
-            </p>
-            <a href="#commitment" className="btn-gold mt-8 w-fit">
-              Our Commitment →
-            </a>
-          </div>
-
-          {/* Right quote over plantation */}
-          <div className="flex items-center justify-center px-8 py-16 lg:px-12 lg:py-24">
+        <div className="relative min-h-[360px] lg:min-h-[580px]">
+          <Image
+            src={sectionPhotos.sustainability}
+            alt="Coffee plantation at golden hour in misty mountains"
+            fill
+            className="object-cover object-left-center lg:object-[30%_center]"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-aroma-black/25 px-8 py-16 lg:px-12">
             <blockquote className="max-w-sm text-center">
               <p className="font-serif text-xl italic leading-relaxed text-white md:text-2xl lg:text-[1.65rem]">
                 &ldquo;Extraordinary coffee can create a better tomorrow.&rdquo;
