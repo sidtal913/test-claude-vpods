@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Header from "@/components/Header";
+import { MOCKUP_BLUEPRINT } from "@/lib/design-refs";
 
 /* ── Trust strip icons ── */
 function LeafIcon() {
@@ -46,42 +47,43 @@ const trustItems = [
   { icon: TruckIcon, label: ["Fast & Secure", "Delivery"] },
 ];
 
+/** Photo-only crops from mockup blueprint /design-refs/ChatGPT-Image-Sep-7-2026-01_27_23-PM.png */
 const collections = [
   {
     title: "Signature Blends",
     tagline: "Timeless classics, perfected.",
-    image: "/images/collection-signature.jpg",
+    image: "/design-refs/collection-signature-crop.jpg",
     alt: "Bronze capsule on stone with coffee beans",
   },
   {
     title: "Single Origin",
     tagline: "Distinctive. Authentic. Unforgettable.",
-    image: "/images/collection-single-origin.jpg",
+    image: "/design-refs/collection-single-origin-crop.jpg",
     alt: "Green capsule among coffee leaves",
   },
   {
     title: "Espresso Intenso",
     tagline: "Bold flavors for a stronger you.",
-    image: "/images/collection-espresso-intenso.jpg",
+    image: "/design-refs/collection-espresso-intenso-crop.jpg",
     alt: "Black capsule on dark volcanic rock",
   },
   {
     title: "Flavored Editions",
     tagline: "A delightful twist on tradition.",
-    image: "/images/collection-flavored.jpg",
+    image: "/design-refs/collection-flavored-crop.jpg",
     alt: "Purple capsule with vanilla and cinnamon",
   },
-];
+] as const;
 
 export default function HomePage() {
   return (
-    <main>
+    <main data-mockup-blueprint={MOCKUP_BLUEPRINT}>
       {/* ── HERO ── */}
       <section className="relative min-h-[90vh] overflow-hidden bg-aroma-black lg:min-h-screen">
         {/* Hero photography */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-marble.jpg"
+            src="/design-refs/hero-marble-crop.jpg"
             alt="Marble countertop with espresso, ARÔMA capsule box, and colorful capsules"
             fill
             priority
@@ -195,7 +197,7 @@ export default function HomePage() {
       {/* ── SUSTAINABILITY — full-width plantation photo with split overlay ── */}
       <section id="sustainability" className="relative min-h-[520px] overflow-hidden lg:min-h-[580px]">
         <Image
-          src="/images/sustainability-plantation.jpg"
+          src="/design-refs/sustainability-plantation-crop.jpg"
           alt="Coffee plantation at golden hour in misty mountains"
           fill
           className="object-cover object-left-center lg:object-[30%_center]"
