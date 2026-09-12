@@ -61,10 +61,10 @@ function BagIcon() {
 export default function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-50">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-6 py-5 lg:px-10">
         {/* Logo */}
-        <a href="#" className="group shrink-0">
-          <span className="font-serif text-2xl font-semibold tracking-[0.08em] text-white lg:text-3xl">
+        <a href="#" className="group shrink-0 justify-self-start">
+          <span className="font-serif text-2xl font-semibold tracking-[0.08em] text-white lg:text-[1.75rem]">
             ARÔMA
           </span>
           <span className="mt-0.5 block font-sans text-[9px] font-medium uppercase tracking-[0.3em] text-white/60">
@@ -72,9 +72,9 @@ export default function Header() {
           </span>
         </a>
 
-        {/* Nav links — desktop */}
+        {/* Nav links — desktop, centered */}
         <nav
-          className="hidden items-center gap-7 lg:flex"
+          className="hidden items-center gap-6 lg:flex xl:gap-8"
           aria-label="Main navigation"
         >
           {navLinks.map((link) => (
@@ -89,7 +89,7 @@ export default function Header() {
         </nav>
 
         {/* Utility icons */}
-        <div className="flex items-center gap-4 text-aroma-gold sm:gap-5">
+        <div className="flex items-center justify-end gap-4 text-aroma-gold sm:gap-5">
           <button
             type="button"
             aria-label="Search"

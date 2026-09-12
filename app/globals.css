@@ -35,6 +35,6 @@ body {
   }
 
   .nav-link-active {
-    @apply border-b border-aroma-gold pb-0.5 text-white;
+    @apply border-b border-white pb-0.5 text-white;
   }
 }
