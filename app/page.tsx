@@ -85,10 +85,10 @@ export default function HomePage() {
             alt="Marble countertop with espresso, ARÔMA capsule box, and colorful capsules"
             fill
             priority
-            className="object-cover object-[60%_40%]"
+            className="object-cover object-right-center"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-aroma-black from-15% via-aroma-black/90 via-55% to-aroma-black/40 to-80%" />
+          <div className="absolute inset-0 bg-gradient-to-r from-aroma-black from-10% via-aroma-black/92 via-50% to-transparent to-75%" />
         </div>
 
         <Header />
@@ -155,31 +155,34 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Collection grid — photo with bottom overlay text per mockup */}
+          {/* Collection grid — title header, photo, SHOP NOW footer per mockup */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
             {collections.map((col) => (
               <article
                 key={col.title}
-                className="group relative aspect-[3/4] overflow-hidden bg-aroma-charcoal sm:aspect-[4/5]"
+                className="group flex flex-col overflow-hidden bg-aroma-charcoal"
               >
-                <Image
-                  src={col.image}
-                  alt={col.alt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-aroma-black via-aroma-black/50 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 px-5 pb-5 pt-16">
+                <div className="px-5 pb-4 pt-5">
                   <h3 className="font-serif text-sm font-medium uppercase tracking-wide text-aroma-gold md:text-base">
                     {col.title}
                   </h3>
-                  <p className="mt-1 font-sans text-xs text-white/75 md:text-sm">
+                  <p className="mt-1 font-sans text-xs text-white/70 md:text-sm">
                     {col.tagline}
                   </p>
+                </div>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={col.image}
+                    alt={col.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                  />
+                </div>
+                <div className="px-5 py-4 text-center sm:text-left">
                   <a
                     href="#shop"
-                    className="mt-4 inline-block font-sans text-[10px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:text-aroma-gold"
+                    className="font-sans text-[10px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:text-aroma-gold"
                   >
                     Shop Now →
                   </a>
