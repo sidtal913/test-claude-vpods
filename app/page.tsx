@@ -85,23 +85,22 @@ export default function HomePage() {
             alt="Marble countertop with espresso, ARÔMA capsule box, and colorful capsules"
             fill
             priority
-            className="object-cover object-[85%_45%] lg:object-[75%_45%]"
+            className="object-cover object-[62%_58%] lg:object-[58%_52%]"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-aroma-black from-5% via-aroma-black via-45% to-aroma-black/20 to-70%" />
-          <div className="absolute inset-0 bg-gradient-to-l from-aroma-black/70 from-0% via-aroma-black/20 via-25% to-transparent to-45%" />
+          <div className="absolute inset-0 bg-gradient-to-r from-aroma-black from-0% via-aroma-black/95 via-35% to-aroma-black/15 to-55% lg:via-40% lg:to-50%" />
         </div>
 
         <Header />
 
         {/* Decorative script — mockup right overlay */}
         <p
-          className="pointer-events-none absolute bottom-[28%] right-8 hidden font-serif text-2xl italic leading-snug text-white/50 lg:block xl:right-16 xl:text-3xl"
+          className="pointer-events-none absolute bottom-[32%] right-6 hidden font-serif text-xl italic leading-snug text-white/45 lg:block xl:right-12 xl:text-2xl"
           aria-hidden="true"
         >
           More than coffee
           <br />
-          <span className="text-white/70">A ritual</span>
+          <span className="text-white/65">A ritual</span>
         </p>
 
         <div className="relative mx-auto flex max-w-7xl flex-col justify-center px-6 pb-16 pt-32 lg:min-h-screen lg:px-10 lg:pb-24 lg:pt-40">
@@ -156,31 +155,30 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Collection grid — title header, photo, SHOP NOW footer per mockup */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+          {/* Collection grid — photo cards with top overlay + bottom CTA per mockup */}
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
             {collections.map((col) => (
               <article
                 key={col.title}
-                className="group flex flex-col overflow-hidden bg-aroma-charcoal"
+                className="group relative aspect-[3/4] overflow-hidden bg-aroma-charcoal"
               >
-                <div className="px-5 pb-4 pt-5">
-                  <h3 className="font-serif text-sm font-medium uppercase tracking-wide text-aroma-gold md:text-base">
+                <Image
+                  src={col.image}
+                  alt={col.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-aroma-black/75 from-0% via-transparent via-35% to-aroma-black/80 to-100%" />
+                <div className="absolute inset-x-0 top-0 px-4 pb-3 pt-5 md:px-5 md:pt-6">
+                  <h3 className="font-serif text-xs font-medium uppercase tracking-[0.12em] text-aroma-gold md:text-sm">
                     {col.title}
                   </h3>
-                  <p className="mt-1 font-sans text-xs text-white/70 md:text-sm">
+                  <p className="mt-1 font-sans text-[11px] leading-snug text-white/75 md:text-xs">
                     {col.tagline}
                   </p>
                 </div>
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={col.image}
-                    alt={col.alt}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                  />
-                </div>
-                <div className="px-5 py-4 text-center sm:text-left">
+                <div className="absolute inset-x-0 bottom-0 px-4 py-4 md:px-5 md:py-5">
                   <a
                     href="#shop"
                     className="font-sans text-[10px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:text-aroma-gold"
