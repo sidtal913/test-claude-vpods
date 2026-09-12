@@ -85,10 +85,11 @@ export default function HomePage() {
             alt="Marble countertop with espresso, ARÔMA capsule box, and colorful capsules"
             fill
             priority
-            className="object-cover object-right-center"
+            className="object-cover object-[85%_45%] lg:object-[75%_45%]"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-aroma-black from-10% via-aroma-black/92 via-50% to-transparent to-75%" />
+          <div className="absolute inset-0 bg-gradient-to-r from-aroma-black from-5% via-aroma-black via-45% to-aroma-black/20 to-70%" />
+          <div className="absolute inset-0 bg-gradient-to-l from-aroma-black/70 from-0% via-aroma-black/20 via-25% to-transparent to-45%" />
         </div>
 
         <Header />
@@ -199,10 +200,10 @@ export default function HomePage() {
           src="/images/sustainability-plantation.jpg"
           alt="Coffee plantation at golden hour in misty mountains"
           fill
-          className="object-cover object-center"
+          className="object-cover object-left-center lg:object-[30%_center]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-aroma-black/35" />
+        <div className="absolute inset-0 bg-aroma-black/40" />
 
         <div className="relative grid min-h-[520px] lg:min-h-[580px] lg:grid-cols-2">
           {/* Left content panel */}
