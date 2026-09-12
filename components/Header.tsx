@@ -89,7 +89,7 @@ export default function Header() {
         </nav>
 
         {/* Utility icons */}
-        <div className="flex items-center gap-5 text-aroma-gold">
+        <div className="flex items-center gap-4 text-aroma-gold sm:gap-5">
           <button
             type="button"
             aria-label="Search"
@@ -116,6 +116,26 @@ export default function Header() {
           </button>
         </div>
       </div>
+
+      {/* Mobile nav strip */}
+      <nav
+        className="flex gap-4 overflow-x-auto border-t border-white/10 px-6 py-3 lg:hidden"
+        aria-label="Mobile navigation"
+      >
+        {navLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            className={`shrink-0 font-sans text-[10px] font-medium uppercase tracking-[0.12em] ${
+              link.active
+                ? "border-b border-aroma-gold pb-0.5 text-white"
+                : "text-white/70"
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 }
