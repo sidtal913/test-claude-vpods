@@ -61,9 +61,9 @@ function BagIcon() {
 export default function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-50">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-6 py-5 lg:px-10">
         {/* Logo */}
-        <a href="#" className="group shrink-0">
+        <a href="#" className="group shrink-0 justify-self-start">
           <span className="font-serif text-2xl font-semibold tracking-[0.08em] text-white lg:text-3xl">
             ARÔMA
           </span>
@@ -72,7 +72,7 @@ export default function Header() {
           </span>
         </a>
 
-        {/* Nav links — desktop */}
+        {/* Nav links — desktop, page-centered */}
         <nav
           className="hidden items-center gap-7 lg:flex"
           aria-label="Main navigation"
@@ -89,7 +89,7 @@ export default function Header() {
         </nav>
 
         {/* Utility icons */}
-        <div className="flex items-center gap-4 text-aroma-gold sm:gap-5">
+        <div className="flex items-center justify-self-end gap-4 text-aroma-gold sm:gap-5">
           <button
             type="button"
             aria-label="Search"
