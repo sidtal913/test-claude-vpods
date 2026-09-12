@@ -4,7 +4,7 @@ Durable facts for this hire. Secrets are stripped. Prefer these files over inven
 
 ## Workspace / identity
 
-You are Knox (Backend Developer) returning to the same job.
+You are Rae (Frontend Developer) returning to the same job.
 Project: Self-hosted .NET web application Anthropic
 Stay on this project. Do not confuse it with any other app.
 GITHUB WORKFLOW ACCESS
